@@ -15,9 +15,7 @@ import {
   ShieldCheck,
   Sparkles,
   Star,
-  Timer,
   TrendingDown,
-  Users,
   X,
   XCircle,
   Zap,
@@ -97,24 +95,6 @@ const INGREDIENTS = [
     name: "Dalchini",
     sub: "Cinnamon",
     benefit: "Reduces sugar absorption",
-  },
-];
-
-const STEPS = [
-  {
-    num: "01",
-    title: "Regulates Glucose Absorption",
-    desc: "Karela & Methi slow sugar entry into the bloodstream after meals.",
-  },
-  {
-    num: "02",
-    title: "Improves Insulin Sensitivity",
-    desc: "Jamun & Dalchini help cells respond better to insulin signals.",
-  },
-  {
-    num: "03",
-    title: "Boosts Natural Energy",
-    desc: "Neem purifies blood while Ashwagandha restores vitality naturally.",
   },
 ];
 
@@ -672,59 +652,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* ── HOW IT WORKS ────────────────────────────────────────────── */}
-      <section
-        id="how-it-works"
-        className="py-20"
-        style={{
-          background: "linear-gradient(135deg, #203B2A 0%, #2E5040 100%)",
-        }}
-      >
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            light
-            subtitle="A three-step natural mechanism to restore metabolic balance."
-          >
-            How ZERO SUGAR Works
-          </SectionHeading>
-          <div className="relative">
-            {/* Connector line (desktop) */}
-            <div
-              className="hidden md:block absolute top-10 left-[16.66%] right-[16.66%] h-0.5"
-              style={{ backgroundColor: "rgba(201,162,74,0.35)" }}
-            />
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {STEPS.map((step, i) => (
-                <motion.div
-                  key={step.num}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.15, duration: 0.55 }}
-                  className="flex flex-col items-center text-center"
-                >
-                  <div
-                    className="w-20 h-20 rounded-full flex items-center justify-center text-2xl font-bold font-display mb-5 shadow-gold relative z-10"
-                    style={{
-                      background: "linear-gradient(135deg, #C9A24A, #D5B15B)",
-                      color: "#203B2A",
-                    }}
-                  >
-                    {step.num}
-                  </div>
-                  <h3 className="font-semibold text-white text-base mb-2">
-                    {step.title}
-                  </h3>
-                  <p className="text-sm text-white/65 leading-relaxed">
-                    {step.desc}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ── RESULTS / TRANSFORMATION ────────────────────────────────── */}
       <section
         id="results"
@@ -866,72 +793,6 @@ export default function App() {
               </tbody>
             </table>
           </motion.div>
-        </div>
-      </section>
-
-      {/* ── OFFER CTA BAND ──────────────────────────────────────────── */}
-      <section
-        id="offer"
-        className="py-16"
-        style={{
-          background: "linear-gradient(135deg, #1F3B2A 0%, #2E4A35 100%)",
-        }}
-      >
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <div
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold mb-4"
-              style={{
-                backgroundColor: "rgba(201,162,74,0.2)",
-                border: "1px solid #C9A24A",
-                color: "#D5B15B",
-              }}
-            >
-              <Timer className="w-3.5 h-3.5" /> Limited Time Offer
-            </div>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-8">
-              Special Launch <span style={{ color: "#D5B15B" }}>Offer</span>
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
-              {[
-                {
-                  icon: <ShieldCheck className="w-8 h-8" />,
-                  label: "Buy 1 Get 1 Free",
-                  sub: "Double the health benefits",
-                },
-                {
-                  icon: <MapPin className="w-8 h-8" />,
-                  label: "Free Delivery",
-                  sub: "Pan India shipping",
-                },
-                {
-                  icon: <Users className="w-8 h-8" />,
-                  label: "Cash on Delivery",
-                  sub: "Pay when you receive",
-                },
-              ].map((item) => (
-                <div
-                  key={item.label}
-                  className="flex flex-col items-center gap-2 p-5 rounded-2xl"
-                  style={{ backgroundColor: "rgba(255,255,255,0.07)" }}
-                >
-                  <span style={{ color: "#C9A24A" }}>{item.icon}</span>
-                  <div className="font-bold text-white text-base">
-                    {item.label}
-                  </div>
-                  <div className="text-sm text-white/60">{item.sub}</div>
-                </div>
-              ))}
-            </div>
-            <button
-              type="button"
-              onClick={() => scrollTo("#order")}
-              className="btn-gold px-10 py-4 text-lg font-bold tracking-wide"
-              data-ocid="offer.order_now.primary_button"
-            >
-              Order Now — Get BOGO Offer <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
         </div>
       </section>
 
