@@ -806,7 +806,7 @@ export default function App() {
             {/* Product Image + Price Card */}
             <div className="flex flex-col items-center bg-white rounded-2xl shadow-herbal p-8 border border-amber-100">
               <img
-                src="/assets/uploads/ChatGPT-Image-Mar-20-2026-08_29_25-PM-1.png"
+                src="/assets/uploads/final-1.png"
                 alt="Ashokvati ZERO SUGAR"
                 className="w-full max-w-xs object-contain rounded-xl mb-6"
                 style={{ maxHeight: 360 }}
