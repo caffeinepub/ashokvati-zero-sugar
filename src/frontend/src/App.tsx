@@ -67,39 +67,6 @@ const PROBLEMS = [
   },
 ];
 
-const BENEFITS = [
-  {
-    icon: <Activity className="w-7 h-7" />,
-    title: "Supports Insulin Function",
-    desc: "Enhances natural insulin secretion and cellular sensitivity.",
-  },
-  {
-    icon: <TrendingDown className="w-7 h-7" />,
-    title: "Helps Control Blood Sugar",
-    desc: "Clinically validated Ayurvedic herbs to regulate glucose levels.",
-  },
-  {
-    icon: <FlameKindling className="w-7 h-7" />,
-    title: "Reduces Sugar Cravings",
-    desc: "Balances blood sugar spikes that trigger sweet cravings.",
-  },
-  {
-    icon: <Zap className="w-7 h-7" />,
-    title: "Boosts Energy Levels",
-    desc: "Experience sustained vitality without the sugar crash.",
-  },
-  {
-    icon: <Sparkles className="w-7 h-7" />,
-    title: "Improves Metabolism",
-    desc: "Supports healthy metabolic rate and fat utilization.",
-  },
-  {
-    icon: <Leaf className="w-7 h-7" />,
-    title: "100% Natural Ingredients",
-    desc: "Pure Ayurvedic herbs — no synthetics, no fillers.",
-  },
-];
-
 const INGREDIENTS = [
   {
     img: "/assets/generated/ingredient-karela.dim_200x200.jpg",
@@ -609,6 +576,16 @@ export default function App() {
                   </span>
                 ))}
               </div>
+              <div className="mt-8">
+                <button
+                  type="button"
+                  onClick={() => scrollTo("#order")}
+                  className="btn-gold px-8 py-3 text-base font-bold tracking-wide"
+                >
+                  Order Now — Get BOGO Offer{" "}
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+              </div>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: 30 }}
@@ -637,40 +614,6 @@ export default function App() {
                 </span>
               </div>
             </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── KEY BENEFITS ────────────────────────────────────────────── */}
-      <section id="benefits" className="py-20 section-pale-green">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeading subtitle="Backed by Ayurvedic wisdom and modern understanding of metabolic health.">
-            Why Choose ZERO SUGAR?
-          </SectionHeading>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {BENEFITS.map((b, i) => (
-              <motion.div
-                key={b.title}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08, duration: 0.5 }}
-                className="card-hover bg-white rounded-2xl p-6 shadow-herbal"
-              >
-                <div
-                  className="w-14 h-14 rounded-xl flex items-center justify-center mb-4"
-                  style={{ backgroundColor: "#DDE9D4" }}
-                >
-                  <span style={{ color: "#203B2A" }}>{b.icon}</span>
-                </div>
-                <h3 className="font-semibold text-primary text-base mb-2">
-                  {b.title}
-                </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {b.desc}
-                </p>
-              </motion.div>
-            ))}
           </div>
         </div>
       </section>
@@ -716,6 +659,15 @@ export default function App() {
                 </p>
               </motion.div>
             ))}
+          </div>
+          <div className="mt-12 flex justify-center">
+            <button
+              type="button"
+              onClick={() => scrollTo("#order")}
+              className="btn-gold px-8 py-3 text-base font-bold tracking-wide"
+            >
+              Order Now — Get BOGO Offer <ChevronRight className="w-5 h-5" />
+            </button>
           </div>
         </div>
       </section>
