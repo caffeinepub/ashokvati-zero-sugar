@@ -283,6 +283,20 @@ export default function App() {
         form.phone.trim(),
         form.address.trim(),
       );
+      // Also send to Google Sheets via Apps Script webhook (fire-and-forget)
+      fetch(
+        "https://script.google.com/macros/s/AKfycbxBsMQYCrjmKv8pKXoD99wuikqA3AiS9zceWyeXND9yYWcoYXibhwEOY8p-awnx85I3xA/exec",
+        {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            fullName: form.name.trim(),
+            phoneNumber: form.phone.trim(),
+            deliveryAddress: form.address.trim(),
+          }),
+        },
+      ).catch((err) => console.error("Google Sheets sync failed:", err));
       setSubmitted(true);
       setForm({ name: "", phone: "", address: "" });
       toast.success("Order placed successfully! We will contact you shortly.");
