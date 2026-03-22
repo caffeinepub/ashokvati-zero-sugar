@@ -301,6 +301,9 @@ export default function App() {
             fullName: form.name.trim(),
             phoneNumber: form.phone.trim(),
             deliveryAddress: form.address.trim(),
+            orderDateTime: new Date().toLocaleString("en-IN", {
+              timeZone: "Asia/Kolkata",
+            }),
           }),
         },
       ).catch((err) => console.error("Google Sheets sync failed:", err));
@@ -438,11 +441,12 @@ export default function App() {
       {/* ── HERO ────────────────────────────────────────────────────── */}
       <section
         id="hero"
-        className="relative min-h-[85vh] flex items-center overflow-hidden"
+        className="relative flex items-center justify-center overflow-hidden py-16"
         style={{
           backgroundImage: `url('/assets/generated/hero-bg.dim_1400x700.jpg')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
+          minHeight: "60vh",
         }}
       >
         {/* Overlay */}
@@ -450,107 +454,60 @@ export default function App() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(105deg, rgba(20,45,28,0.82) 0%, rgba(20,45,28,0.55) 55%, rgba(20,45,28,0.15) 100%)",
+              "linear-gradient(180deg, rgba(20,45,28,0.88) 0%, rgba(20,45,28,0.70) 100%)",
           }}
         />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            {/* Left Content */}
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
+        <div className="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.h1
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="font-black text-4xl sm:text-5xl lg:text-6xl text-white leading-tight mb-4"
+            style={{
+              textShadow:
+                "0 0 30px rgba(213,177,91,0.6), 0 2px 8px rgba(0,0,0,0.5)",
+              fontWeight: 900,
+            }}
+          >
+            🌿 डायबिटीज़ का खात्मा बिना सर्जरी और बिना दर्द! 🌿
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="text-lg sm:text-xl italic mb-10"
+            style={{ color: "#D5B15B" }}
+          >
+            🌱 आयुर्वेदिक फॉर्मूला जो हजारों लोगों ने अपनाया 🌱
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            className="mx-auto w-full"
+            style={{ maxWidth: "800px" }}
+          >
+            <div
+              className="relative w-full rounded-2xl overflow-hidden"
+              style={{
+                paddingBottom: "56.25%",
+                border: "2px solid rgba(213,177,91,0.5)",
+                boxShadow:
+                  "0 0 40px rgba(213,177,91,0.3), 0 8px 32px rgba(0,0,0,0.5)",
+              }}
             >
-              <div
-                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold mb-5"
-                style={{
-                  backgroundColor: "rgba(201,162,74,0.2)",
-                  border: "1px solid #C9A24A",
-                  color: "#D5B15B",
-                }}
-              >
-                <Leaf className="w-3.5 h-3.5" />
-                100% Ayurvedic Formula
-              </div>
-
-              <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight mb-4">
-                NATURAL AYURVEDIC
-                <br />
-                <span style={{ color: "#D5B15B" }}>DIABETES SUPPORT</span>
-              </h1>
-
-              <p className="text-white/80 text-base md:text-lg mb-8 max-w-lg leading-relaxed">
-                Control Blood Sugar Naturally &nbsp;|&nbsp; Boost Energy &amp;
-                Vitality
-              </p>
-
-              <div className="flex flex-wrap gap-4 mb-10">
-                <button
-                  type="button"
-                  onClick={() => scrollTo("#order")}
-                  className="btn-gold px-10 py-4 text-lg font-bold tracking-wide"
-                  data-ocid="hero.order_now.primary_button"
-                >
-                  Order Now <ChevronRight className="w-4 h-4" />
-                </button>
-              </div>
-
-              {/* Trust Badges */}
-              <div className="flex flex-wrap gap-4">
-                {[
-                  {
-                    icon: <Leaf className="w-4 h-4" />,
-                    label: "100% Ayurvedic Formula",
-                  },
-                  {
-                    icon: <ShieldCheck className="w-4 h-4" />,
-                    label: "No Side Effects",
-                  },
-                  {
-                    icon: <span className="text-base">🇮🇳</span>,
-                    label: "Made in India",
-                  },
-                ].map((badge) => (
-                  <div
-                    key={badge.label}
-                    className="flex items-center gap-2 px-3 py-2 rounded-full text-xs font-semibold text-white"
-                    style={{
-                      backgroundColor: "rgba(255,255,255,0.12)",
-                      backdropFilter: "blur(8px)",
-                    }}
-                  >
-                    <span style={{ color: "#C9A24A" }}>{badge.icon}</span>
-                    {badge.label}
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Right — Product Image */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.85, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 0.9, ease: "easeOut", delay: 0.2 }}
-              className="flex justify-center lg:justify-end"
-            >
-              <div className="relative">
-                <div
-                  className="absolute inset-0 rounded-full blur-3xl opacity-30"
-                  style={{
-                    background:
-                      "radial-gradient(circle, #C9A24A 0%, transparent 70%)",
-                  }}
-                />
-                <img
-                  src="/assets/uploads/ChatGPT-Image-Mar-20-2026-08_29_25-PM-1.png"
-                  alt="Ashokvati ZERO SUGAR Bottle"
-                  className="relative z-10 w-full max-w-sm sm:max-w-md lg:max-w-lg drop-shadow-2xl object-contain"
-                  loading="eager"
-                />
-              </div>
-            </motion.div>
-          </div>
+              <iframe
+                src="https://drive.google.com/file/d/1hatsXxT-GzveBxyUDlehvqLWzTqXbTSP/preview"
+                title="Ashokvati ZERO SUGAR Video"
+                allow="fullscreen"
+                className="absolute inset-0 w-full h-full"
+                style={{ border: "none" }}
+              />
+            </div>
+          </motion.div>
         </div>
 
         {/* Decorative leaf corners */}
