@@ -277,19 +277,26 @@ export default function App() {
         typeof crypto !== "undefined" && crypto.randomUUID
           ? crypto.randomUUID()
           : `order-${Date.now()}-${Math.random().toString(36).slice(2)}`;
-      await actor!.submitOrder(
-        orderId,
-        form.name.trim(),
-        form.phone.trim(),
-        form.address.trim(),
-      );
+      // Try to save to backend (non-blocking if actor not ready)
+      if (actor) {
+        try {
+          await actor.submitOrder(
+            orderId,
+            form.name.trim(),
+            form.phone.trim(),
+            form.address.trim(),
+          );
+        } catch (backendErr) {
+          console.error("Backend save failed:", backendErr);
+        }
+      }
       // Also send to Google Sheets via Apps Script webhook (fire-and-forget)
       fetch(
         "https://script.google.com/macros/s/AKfycbxBsMQYCrjmKv8pKXoD99wuikqA3AiS9zceWyeXND9yYWcoYXibhwEOY8p-awnx85I3xA/exec",
         {
           method: "POST",
           mode: "no-cors",
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "text/plain" },
           body: JSON.stringify({
             fullName: form.name.trim(),
             phoneNumber: form.phone.trim(),
