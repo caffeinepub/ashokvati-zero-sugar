@@ -453,6 +453,32 @@ export default function App() {
                 className="absolute inset-0 w-full h-full"
                 style={{ border: "none" }}
               />
+              {/* Top overlay — hides Google Drive header/toolbar */}
+              <div
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  height: "50px",
+                  zIndex: 10,
+                  pointerEvents: "auto",
+                  backgroundColor: "rgba(20,45,28,0.95)",
+                }}
+              />
+              {/* Bottom overlay — hides Google Drive bottom bar */}
+              <div
+                style={{
+                  position: "absolute",
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  height: "40px",
+                  zIndex: 10,
+                  pointerEvents: "auto",
+                  backgroundColor: "rgba(20,45,28,0.95)",
+                }}
+              />
             </div>
           </motion.div>
         </div>
@@ -806,7 +832,7 @@ export default function App() {
             {/* Product Image + Price Card */}
             <div className="flex flex-col items-center bg-white rounded-2xl shadow-herbal p-8 border border-amber-100">
               <img
-                src="/assets/uploads/final-1.png"
+                src="/assets/uploads/ffff-1.jpg"
                 alt="Ashokvati ZERO SUGAR"
                 className="w-full max-w-xs object-contain rounded-xl mb-6"
                 style={{ maxHeight: 360 }}
